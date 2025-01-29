@@ -913,9 +913,9 @@ header {
 }
 
 .icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
   background: #000000e8;
-  padding: 5px;
+  padding: 2px;
   margin-left: 40%;
   border-radius: 10px;
   color: #fff;
@@ -925,6 +925,58 @@ header {
 .glass-effect {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 1.75rem;
+    /* Smaller heading */
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    /* Smaller service titles */
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    /* Adjust text size for readability */
+  }
+
+  .icon {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .display-5 {
+    font-size: 2rem !important;
+    /* Reduce icon size */
+  }
+}
+
+@media (max-width: 576px) {
+  .about-title {
+    font-size: 1.5rem;
+    /* Even smaller title for mobile */
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+  }
+
+  .icon {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .display-5 {
+    font-size: 1.75rem !important;
+  }
+}
+
 
 /*SKILLS SECTION -------------------------------------------------------------------------------------------------------------- SKILLS  */
 .count {
@@ -969,9 +1021,9 @@ header {
 
 .testimonial-card {
   background: black;
-  border: 1px solid red;
+  border: 1px solid #B81D24;
   border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(255, 0, 0, 0.3);
+  box-shadow: 0px 4px 15px #b81d25aa;
   padding: 2rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -982,8 +1034,8 @@ header {
 }
 
 .testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 6px 20px rgba(255, 0, 0, 0.5);
+  transform: scale(0.9);
+  box-shadow: 0px 6px 10px #e509149a;
 }
 
 .testimonial-card img {
@@ -1006,6 +1058,21 @@ header {
   color: #eee;
 }
 
+@media (min-width: 768px) {
+  .testimonial-slider .slick-track {
+    display: flex !important;
+  }
+
+  .testimonial-card p {
+    color: #eee;
+  }
+
+  .testimonial-slider .slick-slide {
+    display: flex;
+    height: auto;
+  }
+}
+
 
 /* ---------------------------------------------------------------------------  Journal section ---------------------------------------------*/
 .journal-section {
@@ -1015,47 +1082,75 @@ header {
   color: #fff;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 15px;
+.journal-section .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .journal-item {
+  width: 100%;
+  /* Full width on mobile */
+  max-width: 300px;
+  /* Prevents items from getting too big */
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   border: 1px solid #B81D24;
   transition: all .5s ease-in-out;
-}
 
-.journal-item:hover {
-  transform: scale(1.01);
-  box-shadow: 0 6px 12px #bd0a0a33;
+  &:hover {
+    box-shadow: 0 6px 12px #bd0a0a7e;
+  }
 }
 
 .journal-item img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.journal-item:hover img {
+  transform: scale(1.05);
 }
 
 .journal-item .title {
+  width: 100%;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
   background: #e5091449;
-  color: #fff;
+  color: white;
+  border-top: 1px solid #B81D24;
   text-align: center;
-  padding: 10px 0;
-  font-weight: bold;
+  padding: 10px;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .journal-item {
+    width: calc(50% - 15px);
+    /* 2 items per row on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .journal-item {
+    width: calc(33.33% - 15px);
+    /* 3 items per row on larger screens */
+  }
 }
 
 .modal-content {
-  background-color: #3f080b;
+  background-color: #170304;
   color: #fff;
   text-align: center;
   padding: 20px;
+}
+
+.modal-content .btn-close {
+  padding: 15px;
+  background-color: #de1717;
 }
 
 /* Contact Section --------------------------------------------------------------------------------------------- Contact Section */
