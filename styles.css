@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
 *::before,
@@ -20,6 +21,125 @@ body {
   font-family: "DM Sans", serif;
   font-optical-sizing: auto;
   user-select: none;
+}
+
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E50914;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  box-shadow: 0 0 50px #c8111a;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+  mix-blend-mode: difference;
+  animation: pulseRing 1.5s infinite ease-in-out;
+  /* Added animation */
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #B81D24;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  box-shadow: 0 0 50px #c8111a;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+  animation: pulseDot 1.5s infinite ease-in-out;
+  /* Added animation */
+}
+
+/* Animation keyframes for the cursor ring */
+@keyframes pulseRing {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+
+  50% {
+    width: 25px;
+    height: 25px;
+    opacity: 0.7;
+  }
+
+  100% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+}
+
+/* Animation keyframes for the cursor dot */
+@keyframes pulseDot {
+  0% {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+  }
+
+  50% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.8;
+  }
+
+  100% {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+  }
+}
+
+
+/* Effect for clickable elements */
+a:hover~.cursor,
+button:hover~.cursor,
+.portfolio-item:hover~.cursor,
+.nav-link:hover~.cursor,
+.filter-btn:hover~.cursor,
+.slide img:hover~.cursor,
+.card:hover~.cursor,
+.social-icon:hover~.cursor,
+.journal-item:hover~.cursor {
+  width: 40px;
+  height: 40px;
+  border-color: #B81D24;
+  background-color: rgba(229, 9, 20, 0.2);
+}
+
+/* Hide cursor when over form elements for better usability */
+input:hover~.cursor,
+textarea:hover~.cursor,
+select:hover~.cursor {
+  opacity: 0;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #B81D24;
+  border-radius: 8px;
+  transition: all .5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f22222;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #212121;
+  border-radius: 8px;
 }
 
 /* Preloader Container */

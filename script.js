@@ -1,3 +1,67 @@
+// Custom cursor functionality
+document.addEventListener('DOMContentLoaded', function () {
+  // Create cursor elements
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+
+  const cursorDot = document.createElement('div');
+  cursorDot.classList.add('cursor-dot');
+
+  // Add to DOM
+  document.body.appendChild(cursor);
+  document.body.appendChild(cursorDot);
+
+  // Update cursor position on mouse move
+  document.addEventListener('mousemove', function (e) {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+
+    // Add slight delay to cursorDot for trailing effect
+    setTimeout(() => {
+      cursorDot.style.top = e.clientY + 'px';
+      cursorDot.style.left = e.clientX + 'px';
+    }, 50);
+  });
+
+  // Add interactive effects for clickable elements
+  const clickables = document.querySelectorAll('a, button, .portfolio-item, .nav-link, .filter-btn, .slide img, .card, .social-icon, .journal-item');
+
+  clickables.forEach(element => {
+    element.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(0.5)';
+      cursorDot.style.backgroundColor = '#E50914';
+    });
+
+    element.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorDot.style.backgroundColor = '#B81D24';
+    });
+  });
+
+  // Special effect for mousedown
+  document.addEventListener('mousedown', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+
+  // Handle cursor visibility when mouse leaves window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    cursorDot.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    cursorDot.style.opacity = '1';
+  });
+});
 // Pre-Loader
 
 window.addEventListener("load", function () {
